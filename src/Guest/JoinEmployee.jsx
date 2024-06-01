@@ -24,7 +24,8 @@ const JoinEmployee = () => {
         const birthdate = e.target.birthdate.value;
         const password = e.target.password.value;
         const accepted = e.target.terms.checked;
-        console.log(name, email, birthdate, photo, password);
+        const role = "employee";
+        console.log(name, email, birthdate, photo, password, role);
 
         if (password.length < 6) {
             setRegisterError("Password should be at least 6 characters");
@@ -43,6 +44,10 @@ const JoinEmployee = () => {
             setRegisterError("Please accept our terms and conditions");
             return;
         }
+
+        // reset error
+        setRegisterError("");
+        setRegisterSuccess("");
     }
     return (
         <div className="w-full md:w-4/5 mx-auto py-20  min-h-screen">
