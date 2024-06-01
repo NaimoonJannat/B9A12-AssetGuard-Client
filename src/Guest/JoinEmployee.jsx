@@ -121,6 +121,7 @@ const JoinEmployee = () => {
                                 required
                                 className="grow text-gray-500"
                                 name="password"
+                                placeholder="Password"
                             />
                             <span
                                 onClick={() => setShowPass(!showPass)}
@@ -132,7 +133,7 @@ const JoinEmployee = () => {
 
                         <div>
                             <input type="checkbox" name="terms" />
-                            <label htmlFor="terms">
+                            <label htmlFor="terms" className="text-gray-500">
                                 Accept our <a className="text-gray-500" href="">Terms and Conditions</a>
                             </label>
                         </div>

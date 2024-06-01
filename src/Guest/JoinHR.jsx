@@ -10,24 +10,25 @@ const JoinHR = () => {
     const [registerSuccess, setRegisterSuccess] = useState("");
     const [showPass, setShowPass] = useState(false);
 
-      // to handle date picking 
-      const [dueDate, setDueDate] = useState(null); 
-      const handleDateChange = (date) => {
-          setDueDate(date);
-      };
+    // to handle date picking 
+    const [dueDate, setDueDate] = useState(null); 
+    const handleDateChange = (date) => {
+        setDueDate(date);
+    };
 
     const handleRegister = (e) => {
         e.preventDefault();
         const name = e.target.name.value;
         const email = e.target.email.value;
         const photo = e.target.url.value;
-        const birthdate = e.target.birthdate.value;
+        const birthdate = dueDate; // Get the date from the state
         const company = e.target.company.value;
         const logo = e.target.logoUrl.value;
         const password = e.target.password.value;
+        const packageSelected = e.target.package.value;
         const accepted = e.target.terms.checked;
         const role = "hr";
-        console.log(company, logo, name, email, birthdate, photo, password, role);
+        console.log(company, logo, name, email, birthdate, photo, password, role, packageSelected);
 
         if (password.length < 6) {
             setRegisterError("Password should be at least 6 characters");
@@ -50,16 +51,19 @@ const JoinHR = () => {
         // reset error
         setRegisterError("");
         setRegisterSuccess("");
+        // Set success message
+        setRegisterSuccess("Registration successful!");
     }
+
     return (
-        <div className="w-full md:w-4/5 mx-auto py-20  min-h-screen">
+        <div className="w-full md:w-4/5 mx-auto py-20 min-h-screen">
             <div className="flex flex-col justify-between">
                 <div>
                     <Title title="Register" subtitle="Join as an HR" ></Title>
                 </div>
                 <div className="card shrink-0 p-4 lg:p-8 w-full mx-auto md:w-2/3 bg-[#240750]">
                     <form className="space-y-8 p-4" onSubmit={handleRegister}>
-                    <label className="input input-bordered flex items-center gap-2">
+                        <label className="input input-bordered flex items-center gap-2">
                             <input
                                 type="text"
                                 name="company"
@@ -113,16 +117,31 @@ const JoinHR = () => {
                                 required
                             />
                         </label>
-                        <label className="input input-bordered flex items-center gap-2">
-                        <DatePicker
-                                            selected={dueDate}
-                                            name="birthdate"
-                                            onChange={handleDateChange}
-                                            className="w-full text-gray-500 p-2 rounded-md"
-                                            dateFormat="dd-MM-yyyy" 
-                                            placeholderText="Date of Birth"
-                                        />
-                        </label>
+                        <div className="flex flex-row gap-4">
+                            <label className="input input-bordered flex w-1/2 items-center gap-2">
+                                <DatePicker
+                                    selected={dueDate}
+                                    name="birthdate"
+                                    onChange={handleDateChange}
+                                    className="w-full text-gray-500 p-2 rounded-md"
+                                    dateFormat="dd-MM-yyyy"
+                                    placeholderText="Date of Birth"
+                                />
+                            </label>
+                            {/* Dropdown here */}
+                            <label className="input w-1/2 input-bordered flex items-center gap-2">
+                                <select
+                                    name="package"
+                                    className="w-full text-gray-500 p-2 rounded-md"
+                                    required
+                                >
+                                    <option value="">Select a Package</option>
+                                    <option value="5 members for $5">5 members for $5</option>
+                                    <option value="10 members for $8">10 members for $8</option>
+                                    <option value="20 members for $15">20 members for $15</option>
+                                </select>
+                            </label>
+                        </div>
                         <label className="input input-bordered flex items-center gap-2">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -141,6 +160,7 @@ const JoinHR = () => {
                                 required
                                 className="grow text-gray-500"
                                 name="password"
+                                placeholder="Password"
                             />
                             <span
                                 onClick={() => setShowPass(!showPass)}
@@ -152,7 +172,7 @@ const JoinHR = () => {
 
                         <div>
                             <input type="checkbox" name="terms" />
-                            <label htmlFor="terms">
+                            <label className="text-gray-500" htmlFor="terms">
                                 Accept our <a className="text-gray-500" href="">Terms and Conditions</a>
                             </label>
                         </div>
