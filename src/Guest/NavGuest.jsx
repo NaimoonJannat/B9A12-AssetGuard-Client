@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-
+import logo from "../assets/logo.jpg"
 const NavGuest = () => {
     const navOptions = <>
         <li>
@@ -53,7 +53,10 @@ const NavGuest = () => {
                         {navOptions}
                     </ul>
                 </div>
+                <div className="flex flex-col justify-center items-center">
+                    <img className="w-12" src={logo} alt="" />
                 <a className="btn btn-ghost text-[#57A6A1] text-xl">Asset Guard</a>
+                </div>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu-horizontal menu px-1">
