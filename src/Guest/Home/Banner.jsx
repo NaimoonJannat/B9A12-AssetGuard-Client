@@ -17,7 +17,7 @@ const Banner = () => {
 			<h1 className="text-5xl font-bold leading-none sm:text-6xl">Join As
 				<span className="text-[#57A6A1]"> HR</span>
 			</h1>
-			<p className="mt-6 mb-8 text-lg sm:mb-12">Empower your workforce with AssetTrackPro! Join as an HR Manager today 
+			<p className="mt-6 mb-8 text-lg sm:mb-12">Empower your workforce with AssetGuard! Join as an HR Manager today 
 				<br  className="hidden md:inline lg:hidden" />and streamline your asset management process with ease. 
 			</p>
 			<div className="w-1/4">
@@ -37,7 +37,7 @@ const Banner = () => {
 			<h1 className="text-5xl font-bold leading-none sm:text-6xl">Join As an
 				<span className="text-[#57A6A1]"> Employee</span>
 			</h1>
-			<p className="mt-6 mb-8 text-lg sm:mb-12">Unlock your potential with AssetTrackPro! Join as an employee today and simplify your 
+			<p className="mt-6 mb-8 text-lg sm:mb-12">Unlock your potential with AssetGuard! Join as an employee today and simplify your 
 				<br  className="hidden md:inline lg:hidden" />access to company assets. Easily request the tools you need, keep track of your assigned items, and stay organized with our user-friendly interface.  
 			</p>
 			<div className="w-1/4">
