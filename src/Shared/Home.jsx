@@ -1,10 +1,9 @@
+import HomeGuest from "../Guest/Home/HomeGuest";
 
 
 const Home = () => {
     return (
-        <div>
-            
-        </div>
+        <HomeGuest></HomeGuest>
     );
 };
 

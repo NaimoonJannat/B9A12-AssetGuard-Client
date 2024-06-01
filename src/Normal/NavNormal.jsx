@@ -1,11 +1,13 @@
 import { NavLink } from "react-router-dom";
 
-const NavGuest = () => {
+
+const NavNormal = () => {
     const navOptions = <>
         <li>
-            <NavLink  
+            <NavLink
+                exact 
                 to="/" 
-                className="text-lg text-white"
+                className="text-lg text-[#4D504A]"
                 activeClassName="border-b-2 border-[#D1A054]"
             >
                 Home
@@ -13,8 +15,8 @@ const NavGuest = () => {
         </li>
         <li>
             <NavLink 
-                to="/join-employee" 
-                className="text-lg text-white"
+                to="/my-assets" 
+                className="text-lg text-[#4D504A]"
                 activeClassName="border-b-2 border-[#D1A054] text-[#D1A054]"
             >
                 Join as Employee
@@ -22,8 +24,8 @@ const NavGuest = () => {
         </li>
         <li>
             <NavLink 
-                to="/join-hr" 
-                className="text-lg text-white"
+                to="/my-team" 
+                className="text-lg text-[#4D504A]"
                 activeClassName="border-b-2 border-[#D1A054] text-[#D1A054]"
             >
                 Join as HR
@@ -31,9 +33,18 @@ const NavGuest = () => {
         </li>
         <li>
             <NavLink 
-                to="/login" 
-                className="text-lg text-white"
-                activeClassName="border-b-2 border-[#D1A054] text-[#D1A054]"
+                to="/request-asset" 
+                className="text-lg text-[#4D504A]"
+                activeClassName="border-b-2 border-[#D1A054] text-[#D1A054] bg-white"
+            >
+                Login
+            </NavLink>
+        </li>
+        <li>
+            <NavLink 
+                to="/profile" 
+                className="text-lg text-[#4D504A]"
+                activeClassName="border-b-2 border-[#D1A054] text-[#D1A054] bg-white"
             >
                 Login
             </NavLink>
@@ -41,7 +52,7 @@ const NavGuest = () => {
     </>;
 
     return (
-        <div className="navbar bg-[#240750] fixed z-10">
+        <div className="navbar bg-[#F4F0ED] fixed z-10">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -53,7 +64,7 @@ const NavGuest = () => {
                         {navOptions}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-[#57A6A1] text-xl">Asset Guard</a>
+                <a className="btn btn-ghost text-[#4D504A] text-xl">Asset Guard</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu-horizontal menu px-1">
@@ -67,4 +78,4 @@ const NavGuest = () => {
     );
 };
 
-export default NavGuest;
+export default NavNormal;
