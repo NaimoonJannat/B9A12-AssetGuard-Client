@@ -41,7 +41,7 @@ const NavGuest = () => {
     </>;
 
     return (
-        <div className="navbar bg-[#240750] fixed z-10">
+        <div className="navbar bg-[#240750] fixed z-10 opacity-70">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -53,7 +53,7 @@ const NavGuest = () => {
                         {navOptions}
                     </ul>
                 </div>
-                <div className="flex flex-col justify-center items-center">
+                <div className="flex flex-row justify-center items-center">
                     <img className="w-12" src={logo} alt="" />
                 <a className="btn btn-ghost text-[#57A6A1] text-xl">Asset Guard</a>
                 </div>
