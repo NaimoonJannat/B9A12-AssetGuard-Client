@@ -11,6 +11,7 @@ import AllRequests from "../Hr/AllRequests";
 import EmployeeList from "../Hr/EmployeeList";
 import AddEmployee from "../Hr/AddEmployee";
 import Profile from "../Shared/Pages/Profile";
+import UpdateAssetCard from "../Hr/UpdateAssetCard";
 
 const router = createBrowserRouter([ 
     { 
@@ -36,11 +37,17 @@ const router = createBrowserRouter([
         },
         {
             path:"/asset-list",
-            element:<AssetList></AssetList>
+            element:<AssetList></AssetList>,
+            loader: () => fetch("http://localhost:3000/assets")
         },
         {
             path:"/add-asset",
             element:<AddAsset></AddAsset>
+        },
+        {
+            path:"/update-asset/:id",
+            element:<UpdateAssetCard></UpdateAssetCard>,
+            loader: ({params}) => fetch(`http://localhost:3000/assets/${params.id}`)
         },
         {
             path:"/all-requests",

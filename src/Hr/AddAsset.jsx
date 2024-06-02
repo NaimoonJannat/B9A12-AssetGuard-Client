@@ -9,10 +9,14 @@ const AddAsset = () => {
         const product=form.product.value;
         const quantity=form.quantity.value;
         const type=form.type.value;
+
+        // Determine availability based on quantity
+        const availability = quantity > 0 ? "available" : "out of stock";
+        
         // Get the current date in YYYY-MM-DD format
         const addedDate = new Date().toISOString().split('T')[0];
 
-        const newAsset = { product, quantity, type, addedDate };
+        const newAsset = { product, quantity, type, addedDate, availability };
 
         console.log(newAsset);
 
