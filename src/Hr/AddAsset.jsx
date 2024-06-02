@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import img from "../assets/HR/addAsset.png"
 
 const AddAsset = () => {
@@ -8,11 +9,34 @@ const AddAsset = () => {
         const product=form.product.value;
         const quantity=form.quantity.value;
         const type=form.type.value;
-       
+        // Get the current date in YYYY-MM-DD format
+        const addedDate = new Date().toISOString().split('T')[0];
 
-        const newTask = {product, quantity, type };
+        const newAsset = { product, quantity, type, addedDate };
 
-        console.log(newTask);
+        console.log(newAsset);
+
+         // send data to the server 
+         fetch('http://localhost:3000/assets',{
+            method: 'POST',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(newAsset)
+
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            Swal.fire({
+                    title: "Success!",
+                    text: "Asset Added Successfully",
+                    icon: "success",
+                    confirmButtonText: 'Ok'
+                  });
+                  form.reset();
+            
+        })
     }
     return (
         <div className="hero min-h-screen">
@@ -37,18 +61,18 @@ const AddAsset = () => {
 			<div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
 
 				<div className="col-span-full">
-					<label className="text-base">Product Name</label>
+					<label className="text-base text-white">Product Name</label>
 					<input required name="product" type="text" placeholder="Product Name" className="w-full text-gray-500 p-2 rounded-md" />
 				</div>
 				<div className="col-span-full">
-					<label className="text-base">Quantity</label>
+					<label className="text-base text-white">Quantity</label>
 					<input required name="quantity" type="number" placeholder="Quantity" className="w-full text-gray-500 p-2 rounded-md  " />
 				</div>
                 <div className="col-span-full">
-					<label required className="text-base">Product Type</label>
+					<label required className="text-base text-white">Product Type</label>
 					<select name="type" type="text" placeholder="Select Product Type" className="w-full text-gray-500 p-2 rounded-md">
 
-                    <option disabled value="">Select Product Type</option>
+                    <option value=""  disabled selected>Select Product Type</option>
                     <option value="returnable">Returnable</option>
                     <option value="non-returnable">Non-Returnable</option>
                     </select>
