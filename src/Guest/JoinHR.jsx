@@ -1,15 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Title from "../Shared/Title";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { AuthContext } from "../providers/AuthProvider";
+import { toast } from "react-toastify";
 
 const JoinHR = () => {
     const [registerError, setRegisterError] = useState("");
     const [registerSuccess, setRegisterSuccess] = useState("");
     const [showPass, setShowPass] = useState(false);
-
+    const {createUser} = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+    
     // to handle date picking 
     const [dueDate, setDueDate] = useState(null); 
     const handleDateChange = (date) => {
@@ -51,8 +56,19 @@ const JoinHR = () => {
         // reset error
         setRegisterError("");
         setRegisterSuccess("");
-        // Set success message
-        setRegisterSuccess("Registration successful!");
+       
+           // create user 
+           createUser(name, email, photo, password)
+           .then(() =>{
+               setRegisterSuccess('Registered Successfully!');
+               toast.success("Account Registered Successfully!");
+               navigate(location?.state ? location.state : '/')
+           })
+           .catch(error =>{
+               console.error(error);
+               setRegisterError(error.message);
+               toast.error("There was an error! Please try again later.");
+           })
     }
 
     return (
