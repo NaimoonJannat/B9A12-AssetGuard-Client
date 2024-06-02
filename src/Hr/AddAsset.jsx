@@ -1,7 +1,11 @@
 import Swal from "sweetalert2";
 import img from "../assets/HR/addAsset.png"
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
 
 const AddAsset = () => {
+
+    const {user} = useContext(AuthContext);
 
     const handleCreateButton = event =>{
         event.preventDefault();
@@ -9,6 +13,7 @@ const AddAsset = () => {
         const product=form.product.value;
         const quantity=form.quantity.value;
         const type=form.type.value;
+        const hrEmail= user.email;
 
         // Determine availability based on quantity
         const availability = quantity > 0 ? "available" : "out of stock";
@@ -16,7 +21,7 @@ const AddAsset = () => {
         // Get the current date in YYYY-MM-DD format
         const addedDate = new Date().toISOString().split('T')[0];
 
-        const newAsset = { product, quantity, type, addedDate, availability };
+        const newAsset = { product, quantity, type, addedDate, availability, hrEmail };
 
         console.log(newAsset);
 
