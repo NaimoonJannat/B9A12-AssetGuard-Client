@@ -1,7 +1,22 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
+import { toast } from "react-toastify";
 
 
 const NavNormal = () => {
+    const { user, logOut } = useContext(AuthContext);
+    const handleSignOut = () => {
+        logOut()
+          .then((result) => {
+            console.log(result);
+            toast.success("Logged Out Successfully!");
+          })
+          .catch((error) => {
+            console.error("Logout Error:", error);
+            toast.error("Error logging out. Please try again later.");
+          });
+        };
     const navOptions = <>
     <li>
         <NavLink  
@@ -69,12 +84,18 @@ return (
                 {navOptions}
             </ul>
         </div>
-        <div className="navbar-end">
-        <div className="w-10 rounded-full">
-          <img alt="Tailwind CSS Navbar component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-        </div>
-            <a className="btn btn-xs">Logout</a>
-        </div>
+       {
+        user ?  <div className="navbar-end">
+        <div className="avatar btn btn-circle border-1 border-[#57A6A1] btn-ghost">
+              <div className="w-14 rounded-full">
+                <img src={user.photoURL} />
+              </div>
+              <p>{user.displayName}</p>
+            </div>
+
+            <button onClick={handleSignOut} className="btn btn-xs text-white bg-[#57A6A1]">Log Out</button>
+    </div> : <></>
+       }
     </div>
 );
 };
