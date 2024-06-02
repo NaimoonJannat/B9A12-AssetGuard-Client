@@ -1,12 +1,12 @@
 import { NavLink } from "react-router-dom";
-import logo from "../assets/logo.jpg"
+import logo from "../assets/logo.jpg";
+
 const NavGuest = () => {
     const navOptions = <>
         <li>
             <NavLink  
                 to="/" 
-                className="text-lg text-white"
-                activeClassName="border-b-2 border-[#D1A054]"
+                className={({ isActive }) => `text-lg text-white relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-current after:scale-x-0 after:origin-bottom-right after:transition-transform after:duration-300 ${isActive ? 'after:scale-x-100' : 'hover:after:scale-x-100'}`}
             >
                 Home
             </NavLink>
@@ -14,8 +14,7 @@ const NavGuest = () => {
         <li>
             <NavLink 
                 to="/join-employee" 
-                className="text-lg text-white"
-                activeClassName="border-b-2 border-[#D1A054] text-[#D1A054]"
+                className={({ isActive }) => `text-lg text-white relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-current after:scale-x-0 after:origin-bottom-right after:transition-transform after:duration-300 ${isActive ? 'after:scale-x-100' : 'hover:after:scale-x-100'}`}
             >
                 Join as Employee
             </NavLink>
@@ -23,8 +22,7 @@ const NavGuest = () => {
         <li>
             <NavLink 
                 to="/join-hr" 
-                className="text-lg text-white"
-                activeClassName="border-b-2 border-[#D1A054] text-[#D1A054]"
+                className={({ isActive }) => `text-lg text-white relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-current after:scale-x-0 after:origin-bottom-right after:transition-transform after:duration-300 ${isActive ? 'after:scale-x-100' : 'hover:after:scale-x-100'}`}
             >
                 Join as HR
             </NavLink>
@@ -32,8 +30,7 @@ const NavGuest = () => {
         <li>
             <NavLink 
                 to="/login" 
-                className="text-lg text-white"
-                activeClassName="border-b-2 border-[#D1A054] text-[#D1A054]"
+                className={({ isActive }) => `text-lg text-white relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-current after:scale-x-0 after:origin-bottom-right after:transition-transform after:duration-300 ${isActive ? 'after:scale-x-100' : 'hover:after:scale-x-100'}`}
             >
                 Login
             </NavLink>
@@ -41,7 +38,7 @@ const NavGuest = () => {
     </>;
 
     return (
-        <div className="navbar bg-[#240750] fixed z-10 opacity-70">
+        <div className="navbar bg-[#240750] fixed z-10 opacity-80">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -54,8 +51,8 @@ const NavGuest = () => {
                     </ul>
                 </div>
                 <div className="flex flex-row justify-center items-center">
-                    <img className="w-12" src={logo} alt="" />
-                <a className="btn btn-ghost text-[#57A6A1] text-xl">Asset Guard</a>
+                    <img className="w-12" src={logo} alt="logo" />
+                    <a className="btn btn-ghost text-[#57A6A1] text-xl">Asset Guard</a>
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">
