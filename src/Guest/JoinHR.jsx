@@ -35,6 +35,25 @@ const JoinHR = () => {
         const role = "hr";
         console.log(company, logo, name, email, birthdate, photo, password, role, packageSelected);
 
+
+        const newHR = { company, logo, name, email, birthdate, photo, password, role, packageSelected };
+
+        console.log(newHR);
+
+         // send data to the server 
+         fetch('http://localhost:3000/hrs',{
+            method: 'POST',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(newHR)
+
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
+
         if (password.length < 6) {
             setRegisterError("Password should be at least 6 characters");
             return;

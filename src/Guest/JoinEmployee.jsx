@@ -33,6 +33,25 @@ const JoinEmployee = () => {
         const role = "employee";
         console.log(name, email, birthdate, photo, password, role);
 
+        const newEmployee = { name, email, birthdate, photo, password, role };
+
+        console.log(newEmployee);
+
+         // send data to the server 
+         fetch('http://localhost:3000/employees',{
+            method: 'POST',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(newEmployee)
+
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
+
+
         if (password.length < 6) {
             setRegisterError("Password should be at least 6 characters");
             return;
