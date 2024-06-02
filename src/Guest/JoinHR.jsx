@@ -41,6 +41,19 @@ const JoinHR = () => {
         console.log(newHR);
 
          // send data to the server 
+         fetch('http://localhost:3000/users',{
+            method: 'POST',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(newHR)
+
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
+         // send data to the server 
          fetch('http://localhost:3000/hrs',{
             method: 'POST',
             headers: {

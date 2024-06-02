@@ -55,13 +55,10 @@ const NavGuest = () => {
                     <a className="btn btn-ghost text-[#57A6A1] text-xl">Asset Guard</a>
                 </div>
             </div>
-            <div className="navbar-center hidden lg:flex">
+            <div className="navbar-end hidden lg:flex">
                 <ul className="menu-horizontal menu px-1">
                     {navOptions}
                 </ul>
-            </div>
-            <div className="navbar-end">
-                <a className="btn">Button</a>
             </div>
         </div>
     );
