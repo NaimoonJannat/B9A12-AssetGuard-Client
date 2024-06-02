@@ -1,13 +1,20 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import Title from "../Shared/Title";
+import { useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
+import { toast } from "react-toastify";
 
 const Login = () => {
     const[loginError, setLoginError]=useState('');
     const[loginSuccess, setLoginSuccess]=useState('');
     const[showPass, setShowPass]=useState(false);
     const emailRef= useRef(null);
+    const location = useLocation();
+    const navigate = useNavigate();
 
+    const {signIn, signInGoogle} = useContext(AuthContext);
+    
     const handleLogin = (e) =>{
         e.preventDefault();
             const email=e.target.email.value;
@@ -17,10 +24,38 @@ const Login = () => {
             // reset error 
             setLoginError('');
             setLoginSuccess('');
+
+            signIn(email, password)
+            .then(result =>{
+                console.log(result.user);
+                 // navigate after login 
+            navigate(location?.state ? location.state : '/')
+            
+                {setLoginSuccess('Logged in successfully!');
+                
+        }
+            })
+            .catch(error =>{
+                console.error(error);
+                setLoginError(error.message);
+            })
     }
 
     const handleGoogleSignIn = () =>{
-
+        signInGoogle()
+        .then(result =>{
+            const user = result.user;
+            toast.success("Logged In Successfully!")
+            console.log(user);
+             // navigate after login 
+             navigate(location?.state ? location.state : '/')
+            // console.log(user.photoURL);
+  
+        })
+        .catch(error =>{
+            console.log(error);
+            toast.error("Error logging in. Please try again later.");
+        })
     }
 
 
