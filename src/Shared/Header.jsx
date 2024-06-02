@@ -1,8 +1,10 @@
-import NavGuest from "../Guest/NavGuest";
+// import NavGuest from "../Guest/NavGuest";
+import NavHr from "../Hr/NavHr";
 
 const Header = () => {
     return (
-            <NavGuest></NavGuest>
+            // <NavGuest></NavGuest>
+            <NavHr></NavHr>
     );
 };
 
