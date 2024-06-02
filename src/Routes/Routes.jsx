@@ -12,6 +12,9 @@ import EmployeeList from "../Hr/EmployeeList";
 import AddEmployee from "../Hr/AddEmployee";
 import Profile from "../Shared/Pages/Profile";
 import UpdateAssetCard from "../Hr/UpdateAssetCard";
+import RequestedAssets from "../Normal/RequestedAssets";
+import RequestAsset from "../Normal/RequestAsset";
+import MyTeam from "../Normal/MyTeam";
 
 const router = createBrowserRouter([ 
     { 
@@ -65,6 +68,18 @@ const router = createBrowserRouter([
             path:"/profile",
             element:<Profile></Profile>
         },
+        {
+            path:"/my-requested-assets",
+            element:<RequestedAssets></RequestedAssets>
+        },
+        {
+            path:"/request-asset",
+            element:<RequestAsset></RequestAsset>
+        },
+        {
+            path:"/my-team",
+            element:<MyTeam></MyTeam>
+        }
     ]
     }, 
    ]);
