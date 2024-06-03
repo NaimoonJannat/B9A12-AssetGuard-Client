@@ -2,17 +2,20 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import { toast } from "react-toastify";
-import useFetchUserData from "../hooks/useFetchUserData";
+// import useFetchUserData from "../hooks/useFetchUserData";
+import useFetchTeamData from "../hooks/useFetchTeamData";
+// import useFetchUserData from "../hooks/useFetchUserData";
 
 
 const NavNormal = () => {
     const { user, logOut } = useContext(AuthContext);
-    const { userData, loading } = useFetchUserData(user?.email);
+    const { userData, loading } = useFetchTeamData(user?.email);
+
 
     if(loading){
         return(
             <div className="w-full">
-                <span className="loading w-1/3 mx-auto text-[##57A6A1] loading-dots 
+                <span className="loading text-[##57A6A1] loading-dots 
         "></span>
             </div>
         );

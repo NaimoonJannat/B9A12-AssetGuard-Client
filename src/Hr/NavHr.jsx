@@ -6,8 +6,7 @@ import { toast } from "react-toastify";
 
 const NavHr = () => {
     const { user, logOut } = useContext(AuthContext);
-    const { userData, loading, error } = useFetchUserData(user?.email);
-    console.log( error);
+    const { userData, loading } = useFetchUserData(user?.email);
     if(loading){
         return(
             <div className="w-full">
