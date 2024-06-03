@@ -7,9 +7,16 @@ import useFetchUserData from "../hooks/useFetchUserData";
 
 const NavNormal = () => {
     const { user, logOut } = useContext(AuthContext);
-    const { userData, loading, error } = useFetchUserData(user?.email);
-    console.log(user.email);
-    console.log(userData);
+    const { userData, loading } = useFetchUserData(user?.email);
+
+    if(loading){
+        return(
+            <div className="w-full">
+                <span className="loading w-1/3 mx-auto text-[##57A6A1] loading-dots 
+        "></span>
+            </div>
+        );
+    }
     const handleSignOut = () => {
         logOut()
           .then((result) => {
@@ -90,12 +97,14 @@ return (
         </div>
        {
         user ?  <div className="navbar-end">
+        <div className="flex justify-center items-center">
+        <p className="text-[#57A6A1] font-semibold">{user.displayName}</p>
         <div className="avatar btn btn-circle border-1 border-[#57A6A1] btn-ghost">
               <div className="w-14 rounded-full">
                 <img src={user.photoURL} />
               </div>
-              <p>{user.displayName}</p>
             </div>
+        </div>
 
             <button onClick={handleSignOut} className="btn btn-xs text-white bg-[#57A6A1]">Log Out</button>
     </div> : <></>

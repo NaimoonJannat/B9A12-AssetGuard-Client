@@ -7,7 +7,15 @@ import { toast } from "react-toastify";
 const NavHr = () => {
     const { user, logOut } = useContext(AuthContext);
     const { userData, loading, error } = useFetchUserData(user?.email);
-    console.log(loading, error);
+    console.log( error);
+    if(loading){
+        return(
+            <div className="w-full">
+                <span className="loading w-1/3 mx-auto text-[##57A6A1] loading-dots 
+        "></span>
+            </div>
+        );
+    }
 
     const handleSignOut = () => {
         logOut()
