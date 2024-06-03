@@ -80,7 +80,8 @@ const router = createBrowserRouter([
         },
         {
             path:"/my-team",
-            element:<MyTeam></MyTeam>
+            element:<MyTeam></MyTeam>,
+            loader: () => fetch("http://localhost:3000/teams")
         }
     ]
     }, 
