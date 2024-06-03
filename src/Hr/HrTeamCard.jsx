@@ -25,26 +25,34 @@ const HrTeamCard = ({ team }) => {
                     title: "Removed!",
                     text: "Employee has been removed.",
                     icon: "success",
+                  }).then(() => {
+                    // send data to the server
+                    const { name, role, email, birthdate, photo } = team;
+                    const removedMember = {
+                      name,
+                      role,
+                      email,
+                      birthdate,
+                      photo,
+                    };
+                    fetch("http://localhost:3000/employees", {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify(removedMember),
+                    })
+                      .then((res) => res.json())
+                      .then((data) => {
+                        console.log(data);
+                        window.location.reload();
+                      });
                   });
-
-                  // send data to the server
-                  const { name, role, email, birthdate, photo } = team;
-                  const removedMember = { name, role, email, birthdate, photo };
-                  fetch("http://localhost:3000/employees", {
-                    method: "POST",
-                    headers: {
-                      "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(removedMember),
-                  })
-                    .then((res) => res.json())
-                    .then((data) => {
-                      console.log(data);
-                      window.location.reload();
-                    });
                 }
               })
-              .catch((error) => console.log("Error deleting assignment:", error));
+              .catch((error) =>
+                console.log("Error deleting assignment:", error)
+              );
           }
         });
       }
@@ -62,7 +70,10 @@ const HrTeamCard = ({ team }) => {
       />
       <p className="text-xl font-semibold leading-tight">{team?.name}</p>
       <p className="text-gray-400">{team?.role}</p>
-      <button onClick={handleRemoveButton} className="btn btn-xs bg-[#57A6A1] text-white">
+      <button
+        onClick={handleRemoveButton}
+        className="btn btn-xs bg-[#57A6A1] text-white"
+      >
         Remove
       </button>
     </div>
