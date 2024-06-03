@@ -58,7 +58,8 @@ const router = createBrowserRouter([
         },
         {
             path:"/employee-list",
-            element:<EmployeeList></EmployeeList>
+            element:<EmployeeList></EmployeeList>,
+            loader: () => fetch("http://localhost:3000/teams")
         },
         {
             path:"/add-employee",
