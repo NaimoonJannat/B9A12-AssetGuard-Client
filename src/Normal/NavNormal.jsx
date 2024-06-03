@@ -2,10 +2,14 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import { toast } from "react-toastify";
+import useFetchUserData from "../hooks/useFetchUserData";
 
 
 const NavNormal = () => {
     const { user, logOut } = useContext(AuthContext);
+    const { userData, loading, error } = useFetchUserData(user?.email);
+    console.log(user.email);
+    console.log(userData);
     const handleSignOut = () => {
         logOut()
           .then((result) => {
@@ -75,9 +79,9 @@ return (
                 </ul>
             </div>
             <div className="flex flex-row justify-center items-center">
-                <img className="w-12" alt="logo" />
-                <a className="btn btn-ghost text-[#57A6A1] text-xl">Asset Guard</a>
-            </div>
+                    {userData?.logo && <img className="w-12" src={userData.logo} alt="logo" />}
+                    <a className="btn btn-ghost text-[#57A6A1] text-xl">{userData ? userData.company : 'Asset Guard'}</a>
+                </div>
         </div>
         <div className="navbar-center hidden lg:flex">
             <ul className="menu-horizontal menu px-1">
