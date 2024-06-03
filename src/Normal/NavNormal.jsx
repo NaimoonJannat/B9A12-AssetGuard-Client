@@ -2,9 +2,8 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import { toast } from "react-toastify";
-// import useFetchUserData from "../hooks/useFetchUserData";
 import useFetchTeamData from "../hooks/useFetchTeamData";
-// import useFetchUserData from "../hooks/useFetchUserData";
+
 
 
 const NavNormal = () => {
