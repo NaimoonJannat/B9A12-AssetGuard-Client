@@ -2,7 +2,7 @@ import { useContext } from "react";
 import Title from "../Shared/Title";
 import { AuthContext } from "../providers/AuthProvider";
 import { useLoaderData } from "react-router-dom";
-import TeamCard from "./TeamCard";
+import HrTeamCard from "./HrTeamCard";
 
 
 const MyTeam = () => {
@@ -32,7 +32,7 @@ const MyTeam = () => {
                 </div>
                 <div className="flex flex-row flex-wrap-reverse justify-center">
                     {filteredTeam.map(team => (
-                        <TeamCard
+                        <HrTeamCard
                             key={team._id}
                             team={team}
                         />
