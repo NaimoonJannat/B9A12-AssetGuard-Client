@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import useFetchUserData from "../hooks/useFetchUserData";
 import { toast } from "react-toastify";
@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 const NavHr = () => {
     const { user, logOut } = useContext(AuthContext);
     const { userData, loading } = useFetchUserData(user?.email);
+    const navigate = useNavigate();
     if(loading){
         return(
             <div className="w-full">
@@ -21,6 +22,7 @@ const NavHr = () => {
             .then((result) => {
                 console.log(result);
                 toast.success("Logged Out Successfully!");
+                navigate("/");
             })
             .catch((error) => {
                 console.error("Logout Error:", error);
