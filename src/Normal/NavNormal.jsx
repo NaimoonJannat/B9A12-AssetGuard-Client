@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import { toast } from "react-toastify";
 import useFetchTeamData from "../hooks/useFetchTeamData";
@@ -9,7 +9,7 @@ import useFetchTeamData from "../hooks/useFetchTeamData";
 const NavNormal = () => {
     const { user, logOut } = useContext(AuthContext);
     const { userData, loading } = useFetchTeamData(user?.email);
-
+    const navigate = useNavigate();
 
     if(loading){
         return(
@@ -24,6 +24,7 @@ const NavNormal = () => {
           .then((result) => {
             console.log(result);
             toast.success("Logged Out Successfully!");
+            navigate("/");
           })
           .catch((error) => {
             console.error("Logout Error:", error);
