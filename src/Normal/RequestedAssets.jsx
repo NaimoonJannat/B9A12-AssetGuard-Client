@@ -7,8 +7,8 @@ import RequestCard from "./RequestCard";
 const RequestedAssets = () => {
     const myRequests = useLoaderData();
     const {user} = useContext(AuthContext);
-    const myEmail = user.email;
-    const filteredData =myRequests.filter(user => user.useremail === myEmail);
+    const myEmail = user?.email;
+    const filteredData =myRequests.filter(user => user?.useremail === myEmail);
     return (
         <div className="py-20">
             <div>
