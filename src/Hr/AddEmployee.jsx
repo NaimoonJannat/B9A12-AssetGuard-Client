@@ -19,7 +19,6 @@ const AddEmployee = () => {
           </label>
         </th>
         <th>Name</th>
-        <th>Role</th>
         <th></th>
       </tr>
     </thead>

@@ -90,10 +90,6 @@ const TableRow = ({ employee }) => {
           </div>
         </div>
       </td>
-      <td>
-        <br />
-        <span className="badge badge-ghost badge-sm">{employee.role}</span>
-      </td>
       <th>
         <button
           onClick={handleAddButton}
