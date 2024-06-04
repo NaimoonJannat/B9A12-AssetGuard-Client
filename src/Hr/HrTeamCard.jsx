@@ -51,7 +51,7 @@ const HrTeamCard = ({ team }) => {
                 }
               })
               .catch((error) =>
-                console.log("Error deleting assignment:", error)
+                console.log("Error deleting:", error)
               );
           }
         });

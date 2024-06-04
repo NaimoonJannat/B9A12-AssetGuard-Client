@@ -54,7 +54,8 @@ const router = createBrowserRouter([
         },
         {
             path:"/all-requests",
-            element:<AllRequests></AllRequests>
+            element:<AllRequests></AllRequests>,
+            loader: () => fetch("http://localhost:3000/requests")
         },
         {
             path:"/employee-list",
@@ -72,7 +73,8 @@ const router = createBrowserRouter([
         },
         {
             path:"/my-requested-assets",
-            element:<RequestedAssets></RequestedAssets>
+            element:<RequestedAssets></RequestedAssets>,
+            loader: () => fetch("http://localhost:3000/requests")
         },
         {
             path:"/request-asset",

@@ -31,7 +31,7 @@ const AssetCardNormal = ({ asset, user }) => {
             console.log(data);
             Swal.fire({
                     title: "Success!",
-                    text: "Request Successfully",
+                    text: "Requested Successfully",
                     icon: "success",
                     confirmButtonText: 'Ok'
                   });
