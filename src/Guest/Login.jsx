@@ -7,10 +7,8 @@ import { toast } from "react-toastify";
 
 const Login = () => {
     const [loginError, setLoginError] = useState('');
-    const [loginSuccess, setLoginSuccess] = useState('');
     const [showPass, setShowPass] = useState(false);
     const emailRef = useRef(null);
-    // const location = useLocation();
     const navigate = useNavigate();
 
     const { signIn, signInGoogle } = useContext(AuthContext);
@@ -23,14 +21,14 @@ const Login = () => {
 
         // reset error 
         setLoginError('');
-        setLoginSuccess('');
 
         signIn(email, password)
         .then(result => {
             console.log(result.user);
             // navigate after login 
+            toast.success('Logged in successfully!');
+            console.log("Navigating to home...");
             navigate("/");
-            setLoginSuccess('Logged in successfully!');
         })
         .catch(error => {
             console.error(error);
@@ -42,10 +40,11 @@ const Login = () => {
         signInGoogle()
         .then(result => {
             const user = result.user;
-            toast.success("Logged In Successfully!");
             console.log(user);
+            toast.success("Logged In Successfully!");
             // navigate after login 
-            navigate("/");
+            console.log("Navigating to home...");
+            navigate("/profile");
         })
         .catch(error => {
             console.log(error);
@@ -95,7 +94,6 @@ const Login = () => {
                         </div>
                     </form>
                     {loginError && <p className="text-red-600">{loginError}</p>}
-                    {loginSuccess && <p className="text-green-600">{loginSuccess}</p>}
                 </div>
             </div>
         </div>

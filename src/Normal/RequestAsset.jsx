@@ -1,8 +1,9 @@
+// RequestAsset.js
+import { useContext } from 'react';
 import { useLoaderData } from "react-router-dom";
 import Title from "../Shared/Title";
 import AssetCardNormal from "./AssetCardNormal";
 import useFetchTeamData from "../hooks/useFetchTeamData";
-import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 
 const RequestAsset = () => {
@@ -28,6 +29,7 @@ const RequestAsset = () => {
                     <AssetCardNormal
                         key={asset._id}
                         asset={asset}
+                        user={user}
                     />
                 )}
             </div>
