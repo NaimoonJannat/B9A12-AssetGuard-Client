@@ -50,7 +50,9 @@ const AssetCardNormal = ({ asset, user }) => {
                 </div>
             </div>
             <div className="text-right">
-                <button onClick={handleRequestClick} className="btn bg-[#240570] text-white">Request</button>
+                {
+                    (availability === 'out of stock') ? <button disabled className="btn bg-[#240570] text-white">Request</button> : <button onClick={handleRequestClick} className="btn bg-[#240570] text-white">Request</button>
+                }
             </div>
 
             <RequestModal
