@@ -1,6 +1,7 @@
 // AssetCardNormal.js
 import { useState } from 'react';
 import RequestModal from './RequestModal';
+import Swal from 'sweetalert2';
 
 const AssetCardNormal = ({ asset, user }) => {
     const { product, type, availability } = asset;
@@ -15,7 +16,27 @@ const AssetCardNormal = ({ asset, user }) => {
     };
 
     const handleSubmitRequest = (requestData) => {
-        console.log(requestData); // Send requestData to the backend
+        console.log(requestData); 
+        // Send requestData to the backend
+        fetch('http://localhost:3000/requests',{
+            method: 'POST',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(requestData)
+
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            Swal.fire({
+                    title: "Success!",
+                    text: "Request Successfully",
+                    icon: "success",
+                    confirmButtonText: 'Ok'
+                  });
+            
+        })
        
     };
 

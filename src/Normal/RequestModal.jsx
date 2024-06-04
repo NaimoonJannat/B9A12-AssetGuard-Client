@@ -1,4 +1,4 @@
-// RequestModal.js
+
 import { useState, useEffect } from 'react';
 
 const RequestModal = ({ isOpen, onClose, onSubmit, asset, user }) => {
@@ -40,15 +40,6 @@ const RequestModal = ({ isOpen, onClose, onSubmit, asset, user }) => {
                         onChange={(e) => setNotes(e.target.value)}
                     />
                 </div>
-                {/* <div className="mb-4">
-                    <label className="block mb-2">Request Date</label>
-                    <input
-                        type="text"
-                        className="border p-2 w-full"
-                        value={requestDate}
-                        readOnly
-                    />
-                </div> */}
                 <div className="flex justify-end">
                     <button className="btn bg-gray-500 text-white mr-2" onClick={onClose}>Cancel</button>
                     <button className="btn bg-[#240570] text-white" onClick={handleSubmit}>Request</button>
