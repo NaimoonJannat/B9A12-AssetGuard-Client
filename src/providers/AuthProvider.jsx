@@ -1,6 +1,5 @@
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
-
 import { GoogleAuthProvider } from "firebase/auth";
 import app from "../firebase/firebase.config";
 
@@ -8,80 +7,87 @@ export const AuthContext = createContext(null);
 
 const auth = getAuth(app);
 
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [role, setRole] = useState(null); // New state for role
 
     const provider = new GoogleAuthProvider();
 
-    const createUser = (name, email, photo, password) => {
-        setLoading(true);
-        // Create user
-        return createUserWithEmailAndPassword(auth, email, password)
-            .then(userCredential => {
-                const user = userCredential.user;
-                // Update the profile with the provided name and photoURL
-                return updateProfile(user, {
-                    displayName: name,
-                    photoURL: photo
-                }).then(() => {
-                    setUser(user);
-                    return userCredential; // Return userCredential after profile update
-                });
-            })
-            .catch(error => {
-                setLoading(false);
-                throw error;
-            });
-    }
-
-    const signInGoogle = () => {
-        setLoading(true);
-        return signInWithPopup(auth, provider).then((result) => {
-            setUser(result.user);
-        }).finally(() => {
-            setLoading(false);
-        });
-    }
-
-    const signIn = (email, password) => {
-        setLoading(true);
-        return signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
-            setUser(userCredential.user);
-        }).finally(() => {
-            setLoading(false);
-        });
-    }
-
-    const logOut = () => {
-        setLoading(true);
-        return signOut(auth).then(() => {
-            setUser(null);
-        }).finally(() => {
-            setLoading(false);
-        });
-    }
-
-    const updateUserProfile = (displayName, photoURL) => {
-        if (user) {
-            return updateProfile(user, { displayName, photoURL }).then(() => {
-                setUser({ ...user, displayName, photoURL });
-            });
+    const fetchUserRole = async (email) => {
+        try {
+            const response = await fetch("http://localhost:3000/users");
+            const users = await response.json();
+            const currentUser = users.find(u => u.email === email);
+            setRole(currentUser ? currentUser.role : null);
+        } catch (error) {
+            console.error("Failed to fetch user role:", error);
         }
-        return Promise.reject("No user is currently signed in.");
-    }
+    };
+
+    const createUser = async (name, email, photo, password) => {
+        setLoading(true);
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+            await updateProfile(user, {
+                displayName: name,
+                photoURL: photo
+            });
+            setUser(user);
+            await fetchUserRole(email);
+            return userCredential;
+        } catch (error) {
+            setLoading(false);
+            throw error;
+        }
+    };
+
+    const signInGoogle = async () => {
+        setLoading(true);
+        try {
+            const result = await signInWithPopup(auth, provider);
+            setUser(result.user);
+            await fetchUserRole(result.user.email);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const signIn = async (email, password) => {
+        setLoading(true);
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            setUser(userCredential.user);
+            await fetchUserRole(email);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const logOut = async () => {
+        setLoading(true);
+        try {
+            await signOut(auth);
+            setUser(null);
+            setRole(null);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     useEffect(() => {
-        const unSubscribe = onAuthStateChanged(auth, currentUser => {
+        const unSubscribe = onAuthStateChanged(auth, async currentUser => {
             setUser(currentUser);
             setLoading(false);
+            if (currentUser) {
+                await fetchUserRole(currentUser.email);
+            }
         });
         return () => {
             unSubscribe();
-        }
+        };
     }, []);
-
-    const isLoggedIn = !!user;
 
     const authInfo = {
         user,
@@ -90,10 +96,9 @@ const AuthProvider = ({children}) => {
         logOut,
         signIn,
         signInGoogle,
-        updateUserProfile,
-        isLoggedIn,
-        setUser // Exposing setUser for direct updates in Profile component
-    }
+        role, // Expose role
+        setUser // Expose setUser for direct updates in Profile component
+    };
 
     return (
         <AuthContext.Provider value={authInfo}>

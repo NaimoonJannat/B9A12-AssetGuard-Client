@@ -15,6 +15,7 @@ import UpdateAssetCard from "../Hr/UpdateAssetCard";
 import RequestedAssets from "../Normal/RequestedAssets";
 import RequestAsset from "../Normal/RequestAsset";
 import MyTeam from "../Normal/MyTeam";
+import { AdminRoute, EmployeeRoute, PrivateRoute } from "../PrivateRoute";
 
 const router = createBrowserRouter([ 
     { 
@@ -40,50 +41,50 @@ const router = createBrowserRouter([
         },
         {
             path:"/asset-list",
-            element:<AssetList></AssetList>,
+            element: <AdminRoute><AssetList></AssetList></AdminRoute>,
             loader: () => fetch("http://localhost:3000/assets")
         },
         {
             path:"/add-asset",
-            element:<AddAsset></AddAsset>
+            element:<AdminRoute><AddAsset></AddAsset></AdminRoute>
         },
         {
             path:"/update-asset/:id",
-            element:<UpdateAssetCard></UpdateAssetCard>,
+            element:<AdminRoute><UpdateAssetCard></UpdateAssetCard></AdminRoute>,
             loader: ({params}) => fetch(`http://localhost:3000/assets/${params.id}`)
         },
         {
             path:"/all-requests",
-            element:<AllRequests></AllRequests>,
+            element:<AdminRoute><AllRequests></AllRequests></AdminRoute>,
             loader: () => fetch("http://localhost:3000/requests")
         },
         {
             path:"/employee-list",
-            element:<EmployeeList></EmployeeList>,
+            element:<AdminRoute><EmployeeList></EmployeeList></AdminRoute>,
             loader: () => fetch("http://localhost:3000/teams")
         },
         {
             path:"/add-employee",
-            element:<AddEmployee></AddEmployee>,
+            element:<AdminRoute><AddEmployee></AddEmployee></AdminRoute>,
             loader: () => fetch("http://localhost:3000/employees")
         },
         {
             path:"/profile",
-            element:<Profile></Profile>
+            element:<PrivateRoute><Profile></Profile></PrivateRoute>
         },
         {
             path:"/my-requested-assets",
-            element:<RequestedAssets></RequestedAssets>,
+            element:<EmployeeRoute><RequestedAssets></RequestedAssets></EmployeeRoute>,
             loader: () => fetch("http://localhost:3000/requests")
         },
         {
             path:"/request-asset",
-            element:<RequestAsset></RequestAsset>,
+            element:<EmployeeRoute><RequestAsset></RequestAsset></EmployeeRoute>,
             loader: () => fetch("http://localhost:3000/assets")
         },
         {
             path:"/my-team",
-            element:<MyTeam></MyTeam>,
+            element:<EmployeeRoute><MyTeam></MyTeam></EmployeeRoute>,
             loader: () => fetch("http://localhost:3000/teams")
         }
     ]

@@ -28,7 +28,7 @@ const Login = () => {
             // navigate after login 
             toast.success('Logged in successfully!');
             console.log("Navigating to home...");
-            navigate("/");
+            navigate("/profile");
         })
         .catch(error => {
             console.error(error);

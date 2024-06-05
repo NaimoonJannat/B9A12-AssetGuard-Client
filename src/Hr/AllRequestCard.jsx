@@ -112,14 +112,22 @@ const AllRequestCard = ({request}) => {
                 <p>Note: {notes}</p>
 			
         </div>
-            <div className="flex gap-2 justify-center items-center">
-            
+            {
+              (status === 'pending') ?
+              <div className="flex gap-2 justify-center items-center">
             <button onClick={handleApproveButton} className="btn btn-circle text-[#3bbd3bb0] border-1 border-[#240570]"><FaCheck /></button>
             
             <button onClick={() => handleDelete(_id)} className="btn btn-circle text-[#F50000] border-1 border-[#240570]">
             <RxCross2 />
             </button >
+        </div> : <div className="flex gap-2 justify-center items-center">
+            <button onClick={handleApproveButton} disabled className="btn btn-circle text-[#3bbd3bb0] border-1 border-[#240570]"><FaCheck /></button>
+            
+            <button onClick={() => handleDelete(_id)} disabled className="btn btn-circle text-[#F50000] border-1 border-[#240570]">
+            <RxCross2 />
+            </button >
         </div>
+            }
             
 	</div>
 
