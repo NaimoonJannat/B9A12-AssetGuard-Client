@@ -32,7 +32,7 @@ const HomePendingNorm = () => {
     const pendingRequests = requests.filter(request => request.status === 'pending').slice(0, 5);
 
     return (
-        <div className='w-full md:w-4/5 mx-auto'>
+        <div className='w-11/12 md:w-4/5 mx-auto'>
             <div>
                 <Title title="My Pending Requests" subtitle="Assets I Need"></Title>
             </div>

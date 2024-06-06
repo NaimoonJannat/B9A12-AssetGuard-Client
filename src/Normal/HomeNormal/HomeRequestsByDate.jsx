@@ -40,7 +40,7 @@ const HomeRequestsByDate = () => {
     const sortedRequests = filteredRequests.sort((a, b) => new Date(b.requestDate) - new Date(a.requestDate));
 
     return (
-        <div className='w-full md:w-4/5 mx-auto'>
+        <div className='w-11/12 md:w-4/5 mx-auto'>
             <div>
                 <Title title="My Requests" subtitle="Assets Requested in the Last Month"></Title>
             </div>
