@@ -58,7 +58,7 @@ const Login = () => {
                 <div>
                     <Title title="Login Now" subtitle="Explore more features"></Title>
                 </div>
-                <div className="card p-4 lg:p-8 shrink-0 w-full md:w-2/3 mx-auto bg-[#240570]">
+                <div className="card p-4 lg:p-8 shrink-0 w-full md:w-2/3 mx-auto bg-[#240750]">
                     <form className="space-y-8 p-4" onSubmit={handleLogin}>
                         <label className="input input-bordered flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 text-[#57A6A1] opacity-70">

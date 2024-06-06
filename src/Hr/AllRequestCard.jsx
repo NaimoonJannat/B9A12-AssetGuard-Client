@@ -89,7 +89,7 @@ const AllRequestCard = ({request}) => {
         });
     }
     return (
-        <div className="text-left border-2 border-[#240570] p-6 rounded-lg">
+        <div className="text-left border-2 border-[#240750] p-6 rounded-lg">
 	<div className="flex justify-between pb-4 border-bottom">
 		<div className="flex items-center">
 			<div className="mb-0 capitalize">Request Date: {requestDate}</div>
@@ -99,15 +99,15 @@ const AllRequestCard = ({request}) => {
 		<div className="space-y-2">
 				<h3 className="text-xl font-semibold">{product}</h3>
                 <div className="flex gap-1">
-                <div className="btn btn-xs border-1 bg-[#57A6A1] text-white border-[#240570]">
+                <div className="btn btn-xs border-1 bg-[#57A6A1] text-white border-[#240750]">
                 {type}
             </div>
-                <div className="btn btn-xs border-1 bg-[#240570] text-white border-[#57A6A1]">
+                <div className="btn btn-xs border-1 bg-[#240750] text-white border-[#57A6A1]">
                 {status}
             </div>
                 </div>
                 <h2>Requested by-</h2>
-                <h2 className="text-[#240570] font-bold">{username}</h2>
+                <h2 className="text-[#240750] font-bold">{username}</h2>
                 <p>Email: {useremail}</p>
                 <p>Note: {notes}</p>
 			
@@ -115,15 +115,15 @@ const AllRequestCard = ({request}) => {
             {
               (status === 'pending') ?
               <div className="flex gap-2 justify-center items-center">
-            <button onClick={handleApproveButton} className="btn btn-circle text-[#3bbd3bb0] border-1 border-[#240570]"><FaCheck /></button>
+            <button onClick={handleApproveButton} className="btn btn-circle text-[#3bbd3bb0] border-1 border-[#240750]"><FaCheck /></button>
             
-            <button onClick={() => handleDelete(_id)} className="btn btn-circle text-[#F50000] border-1 border-[#240570]">
+            <button onClick={() => handleDelete(_id)} className="btn btn-circle text-[#F50000] border-1 border-[#240750]">
             <RxCross2 />
             </button >
         </div> : <div className="flex gap-2 justify-center items-center">
-            <button onClick={handleApproveButton} disabled className="btn btn-circle text-[#3bbd3bb0] border-1 border-[#240570]"><FaCheck /></button>
+            <button onClick={handleApproveButton} disabled className="btn btn-circle text-[#3bbd3bb0] border-1 border-[#240750]"><FaCheck /></button>
             
-            <button onClick={() => handleDelete(_id)} disabled className="btn btn-circle text-[#F50000] border-1 border-[#240570]">
+            <button onClick={() => handleDelete(_id)} disabled className="btn btn-circle text-[#F50000] border-1 border-[#240750]">
             <RxCross2 />
             </button >
         </div>

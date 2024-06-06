@@ -42,7 +42,7 @@ const RequestModal = ({ isOpen, onClose, onSubmit, asset, user }) => {
                 </div>
                 <div className="flex justify-end">
                     <button className="btn bg-gray-500 text-white mr-2" onClick={onClose}>Cancel</button>
-                    <button className="btn bg-[#240570] text-white" onClick={handleSubmit}>Request</button>
+                    <button className="btn bg-[#240750] text-white" onClick={handleSubmit}>Request</button>
                 </div>
             </div>
         </div>

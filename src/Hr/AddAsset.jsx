@@ -63,7 +63,7 @@ const AddAsset = () => {
                         alt=""
                     />
                 </div>
-                <div className="card shrink-0 p-4 w-full md:w-2/3 bg-[#240570]">
+                <div className="card shrink-0 p-4 w-full md:w-2/3 bg-[#240750]">
                 <section className="p-1 md:p-6">
 	<form onSubmit={handleCreateButton} className="container flex flex-col mx-auto space-y-12">
 		<fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md">
