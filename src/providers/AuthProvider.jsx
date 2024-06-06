@@ -16,7 +16,7 @@ const AuthProvider = ({ children }) => {
 
     const fetchUserRole = async (email) => {
         try {
-            const response = await fetch("http://localhost:3000/users");
+            const response = await fetch("https://b9a12-assetguard-server.vercel.app/users");
             const users = await response.json();
             const currentUser = users.find(u => u.email === email);
             setRole(currentUser ? currentUser.role : null);

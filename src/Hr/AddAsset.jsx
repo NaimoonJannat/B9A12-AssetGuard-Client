@@ -26,7 +26,7 @@ const AddAsset = () => {
         console.log(newAsset);
 
          // send data to the server 
-         fetch('http://localhost:3000/assets',{
+         fetch('https://b9a12-assetguard-server.vercel.app/assets',{
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'

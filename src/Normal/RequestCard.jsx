@@ -19,7 +19,7 @@ const RequestCard = ({request}) => {
             confirmButtonText: "Yes!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/requests/${_id}`, {
+                fetch(`https://b9a12-assetguard-server.vercel.app/requests/${_id}`, {
                     method: 'DELETE',
                 })
                 .then(res => res.json())

@@ -32,7 +32,7 @@ const TableRow = ({ employee }) => {
     console.log(addedMember);
 
     // send data to the server
-    fetch("http://localhost:3000/teams", {
+    fetch("https://b9a12-assetguard-server.vercel.app/teams", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -58,7 +58,7 @@ const TableRow = ({ employee }) => {
     const handleRemoveData = (id) => {
       if (id) {
         console.log("Deleting card with ID:", id);
-        fetch(`http://localhost:3000/employees/${id}`, {
+        fetch(`https://b9a12-assetguard-server.vercel.app/employees/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

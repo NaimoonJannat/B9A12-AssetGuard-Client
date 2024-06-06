@@ -11,7 +11,7 @@ const HomeRequestsByDate = () => {
         // Function to fetch data
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:3000/requests');
+                const response = await fetch('https://b9a12-assetguard-server.vercel.app/requests');
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }

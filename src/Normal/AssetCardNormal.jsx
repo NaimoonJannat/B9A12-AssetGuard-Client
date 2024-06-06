@@ -18,7 +18,7 @@ const AssetCardNormal = ({ asset, user }) => {
     const handleSubmitRequest = (requestData) => {
         console.log(requestData); 
         // Send requestData to the backend
-        fetch('http://localhost:3000/requests',{
+        fetch('https://b9a12-assetguard-server.vercel.app/requests',{
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'

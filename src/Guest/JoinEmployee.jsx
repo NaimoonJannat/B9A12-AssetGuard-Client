@@ -38,7 +38,7 @@ const JoinEmployee = () => {
         console.log(newEmployee);
 
          // send data to the server 
-         fetch('http://localhost:3000/users',{
+         fetch('https://b9a12-assetguard-server.vercel.app/users',{
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'
@@ -52,7 +52,7 @@ const JoinEmployee = () => {
         })
 
          // send data to the server 
-         fetch('http://localhost:3000/employees',{
+         fetch('https://b9a12-assetguard-server.vercel.app/employees',{
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'

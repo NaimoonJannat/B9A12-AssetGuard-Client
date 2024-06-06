@@ -41,7 +41,7 @@ const JoinHR = () => {
         console.log(newHR);
 
          // send data to the server 
-         fetch('http://localhost:3000/users',{
+         fetch('https://b9a12-assetguard-server.vercel.app/users',{
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'
@@ -54,7 +54,7 @@ const JoinHR = () => {
             console.log(data);
         })
          // send data to the server 
-         fetch('http://localhost:3000/hrs',{
+         fetch('https://b9a12-assetguard-server.vercel.app/hrs',{
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'

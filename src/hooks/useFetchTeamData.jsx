@@ -9,7 +9,7 @@ const useFetchTeamData = (email) => {
     useEffect(() => {
         if (email) {
             setLoading(true);
-            fetch(`http://localhost:3000/teams`)
+            fetch(`https://b9a12-assetguard-server.vercel.app/teams`)
                 .then(response => response.json())
                 .then(data => {
                     const filteredData = data.filter(user => user.email === email);

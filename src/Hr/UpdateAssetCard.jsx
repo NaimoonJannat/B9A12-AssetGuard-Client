@@ -26,7 +26,7 @@ const UpdateAssetCard = () => {
         console.log(updatedAsset);
 
          // send data to the server 
-         fetch(`http://localhost:3000/assets/${_id}`,{
+         fetch(`https://b9a12-assetguard-server.vercel.app/assets/${_id}`,{
             method: 'PUT',
             headers: {
                 'content-type' : 'application/json'

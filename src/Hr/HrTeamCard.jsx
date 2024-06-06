@@ -14,7 +14,7 @@ const HrTeamCard = ({ team }) => {
           confirmButtonText: "Yes, delete it!",
         }).then((result) => {
           if (result.isConfirmed) {
-            fetch(`http://localhost:3000/teams/${id}`, {
+            fetch(`https://b9a12-assetguard-server.vercel.app/teams/${id}`, {
               method: "DELETE",
             })
               .then((res) => res.json())
@@ -35,7 +35,7 @@ const HrTeamCard = ({ team }) => {
                       birthdate,
                       photo,
                     };
-                    fetch("http://localhost:3000/employees", {
+                    fetch("https://b9a12-assetguard-server.vercel.app/employees", {
                       method: "POST",
                       headers: {
                         "Content-Type": "application/json",

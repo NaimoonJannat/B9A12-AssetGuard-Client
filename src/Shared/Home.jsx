@@ -11,7 +11,7 @@ const Home = () => {
 
     useEffect(() => {
         if (user && user?.email) {
-            fetch('http://localhost:3000/users')
+            fetch('https://b9a12-assetguard-server.vercel.app/users')
                 .then(res => res.json())
                 .then(data => {
                     const userData = data.find(item => item?.email === user?.email);

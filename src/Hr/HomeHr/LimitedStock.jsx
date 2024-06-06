@@ -11,7 +11,7 @@ const LimitedStock = () => {
         // Function to fetch data
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:3000/assets');
+                const response = await fetch('https://b9a12-assetguard-server.vercel.app/assets');
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }

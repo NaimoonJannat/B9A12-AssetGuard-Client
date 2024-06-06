@@ -14,7 +14,7 @@ const AllRequestCard = ({request}) => {
      const handleApproveButton = () => {
         const handleRemoveData = (id) => {
             if (id) {
-                fetch(`http://localhost:3000/requests/${id}`, {
+                fetch(`https://b9a12-assetguard-server.vercel.app/requests/${id}`, {
                     method: "DELETE",
                   })
                     .then((res) => res.json())
@@ -39,7 +39,7 @@ const AllRequestCard = ({request}) => {
                             approveDate
                           };
                           console.log(approvedAsset);
-                          fetch("http://localhost:3000/requests", {
+                          fetch("https://b9a12-assetguard-server.vercel.app/requests", {
                             method: "POST",
                             headers: {
                               "Content-Type": "application/json",
@@ -74,7 +74,7 @@ const AllRequestCard = ({request}) => {
             confirmButtonText: "Yes, reject it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/requests/${_id}`, {
+                fetch(`https://b9a12-assetguard-server.vercel.app/requests/${_id}`, {
                     method: 'DELETE',
                 })
                 .then(res => res.json())

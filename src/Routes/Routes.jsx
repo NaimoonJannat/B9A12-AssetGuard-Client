@@ -42,7 +42,7 @@ const router = createBrowserRouter([
         {
             path:"/asset-list",
             element: <AdminRoute><AssetList></AssetList></AdminRoute>,
-            loader: () => fetch("http://localhost:3000/assets")
+            loader: () => fetch("https://b9a12-assetguard-server.vercel.app/assets")
         },
         {
             path:"/add-asset",
@@ -51,22 +51,22 @@ const router = createBrowserRouter([
         {
             path:"/update-asset/:id",
             element:<AdminRoute><UpdateAssetCard></UpdateAssetCard></AdminRoute>,
-            loader: ({params}) => fetch(`http://localhost:3000/assets/${params.id}`)
+            loader: ({params}) => fetch(`https://b9a12-assetguard-server.vercel.app/assets/${params.id}`)
         },
         {
             path:"/all-requests",
             element:<AdminRoute><AllRequests></AllRequests></AdminRoute>,
-            loader: () => fetch("http://localhost:3000/requests")
+            loader: () => fetch("https://b9a12-assetguard-server.vercel.app/requests")
         },
         {
             path:"/employee-list",
             element:<AdminRoute><EmployeeList></EmployeeList></AdminRoute>,
-            loader: () => fetch("http://localhost:3000/teams")
+            loader: () => fetch("https://b9a12-assetguard-server.vercel.app/teams")
         },
         {
             path:"/add-employee",
             element:<AdminRoute><AddEmployee></AddEmployee></AdminRoute>,
-            loader: () => fetch("http://localhost:3000/employees")
+            loader: () => fetch("https://b9a12-assetguard-server.vercel.app/employees")
         },
         {
             path:"/profile",
@@ -75,17 +75,17 @@ const router = createBrowserRouter([
         {
             path:"/my-requested-assets",
             element:<EmployeeRoute><RequestedAssets></RequestedAssets></EmployeeRoute>,
-            loader: () => fetch("http://localhost:3000/requests")
+            loader: () => fetch("https://b9a12-assetguard-server.vercel.app/requests")
         },
         {
             path:"/request-asset",
             element:<EmployeeRoute><RequestAsset></RequestAsset></EmployeeRoute>,
-            loader: () => fetch("http://localhost:3000/assets")
+            loader: () => fetch("https://b9a12-assetguard-server.vercel.app/assets")
         },
         {
             path:"/my-team",
             element:<EmployeeRoute><MyTeam></MyTeam></EmployeeRoute>,
-            loader: () => fetch("http://localhost:3000/teams")
+            loader: () => fetch("https://b9a12-assetguard-server.vercel.app/teams")
         }
     ]
     }, 
