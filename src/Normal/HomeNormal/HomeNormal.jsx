@@ -1,6 +1,7 @@
 import HomeBannerNorm from "./HomeBannerNorm";
 import HomePendingNorm from "./HomePendingNorm";
 import HomeRequestsByDate from "./HomeRequestsByDate";
+import Notice from "./Notice";
 
 const HomeNormal = () => {
     return (
@@ -9,6 +10,7 @@ const HomeNormal = () => {
             <div>
             <HomePendingNorm></HomePendingNorm>
             <HomeRequestsByDate></HomeRequestsByDate>
+            <Notice></Notice>
             
         </div>
         </div>
