@@ -5,6 +5,7 @@ import { useLoaderData } from "react-router-dom";
 import TeamCard from "./TeamCard";
 import useFetchHrData from "../hooks/useFetchHrData";
 import LoadingSpinner from "../Shared/Pages/LoadingSpinner";
+import { Helmet } from "react-helmet";
 
 const MyTeam = () => {
     const { user } = useContext(AuthContext); // normal employee login data
@@ -39,6 +40,9 @@ const MyTeam = () => {
 
     return (
         <section className="py-20">
+             <Helmet>
+                <title>AssetGuard | My Team</title>
+            </Helmet>
             <div className="container flex flex-col items-center justify-center p-4 mx-auto space-y-8 sm:p-10">
                 <Title title="My Team" subtitle="Meet the teammates"></Title>
                 <div className="flex flex-col justify-center m-8 text-center">

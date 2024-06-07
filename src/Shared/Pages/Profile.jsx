@@ -5,6 +5,7 @@ import Title from "../Title";
 import useFetchUserData from "../../hooks/useFetchUserData";
 import Swal from "sweetalert2";
 import LoadingSpinner from "./LoadingSpinner";
+import { Helmet } from "react-helmet";
 
 const Profile = () => {
     const { user, updateUserProfile } = useContext(AuthContext);
@@ -44,6 +45,9 @@ const Profile = () => {
 
     return (
         <div className="py-20">
+             <Helmet>
+                <title>AssetGuard | My Profile</title>
+            </Helmet>
             {loading ? (
                 <LoadingSpinner></LoadingSpinner>
             ) : (

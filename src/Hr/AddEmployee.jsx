@@ -1,12 +1,16 @@
 import { useLoaderData } from "react-router-dom";
 import Title from "../Shared/Title";
 import TableRow from "./TableRow";
+import { Helmet } from "react-helmet";
 
 
 const AddEmployee = () => {
     const employees = useLoaderData()
     return (
         <div className="w-full md:w-4/5 mx-auto py-20">
+          <Helmet>
+                <title>AssetGuard | Add Employee</title>
+            </Helmet>
             <Title title="Add An Employee" subtitle="Increase Your Teamwork"></Title>
             <div className="overflow-x-auto">
   <table className="table">

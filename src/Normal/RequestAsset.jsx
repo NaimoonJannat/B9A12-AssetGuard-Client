@@ -4,6 +4,7 @@ import Title from "../Shared/Title";
 import AssetCardNormal from "./AssetCardNormal";
 import { AuthContext } from "../providers/AuthProvider";
 import LoadingSpinner from '../Shared/Pages/LoadingSpinner';
+import { Helmet } from 'react-helmet';
 
 const RequestAsset = () => {
     const assets = useLoaderData();
@@ -54,6 +55,9 @@ const RequestAsset = () => {
 
     return (
         <div className="text-center space-y-4 py-20 w-11/12 md:w-4/5 mx-auto">
+             <Helmet>
+                <title>AssetGuard | Request Asset</title>
+            </Helmet>
             <Title title="Request An Asset" subtitle="Choose asset to request" />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {filteredAssets.map(asset =>

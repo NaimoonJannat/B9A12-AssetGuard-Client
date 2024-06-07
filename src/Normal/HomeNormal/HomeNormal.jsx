@@ -5,6 +5,7 @@ import HomeRequestsByDate from "./HomeRequestsByDate";
 import Notice from "./Notice";
 import { AuthContext } from "../../providers/AuthProvider";
 import LoadingSpinner from "../../Shared/Pages/LoadingSpinner";
+import { Helmet } from "react-helmet";
 
 const HomeNormal = () => {
     const [userData, setUserData] = useState([]);
@@ -48,6 +49,9 @@ const HomeNormal = () => {
 
     return (
         <div className="space-y-20">
+             <Helmet>
+                <title>AssetGuard | Home</title>
+            </Helmet>
             <HomeBannerNorm />
             {
                 teamUser.length > 0 ? 

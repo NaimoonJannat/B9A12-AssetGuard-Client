@@ -1,11 +1,15 @@
 import { useLoaderData } from "react-router-dom";
 import Title from "../Shared/Title";
 import AllRequestCard from "./AllRequestCard";
+import { Helmet } from "react-helmet";
 
 const AllRequests = () => {
     const requests = useLoaderData();
     return (
         <div className="py-20 w-11/12 md:w-4/5 mx-auto">
+             <Helmet>
+                <title>AssetGuard | All Requests</title>
+            </Helmet>
             <div>
             <Title
              title="My Requested Assets" subtitle="All Requested Assets"></Title>

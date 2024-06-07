@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import img from "../assets/HR/addAsset.png"
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const AddAsset = () => {
 
@@ -49,6 +50,9 @@ const AddAsset = () => {
     }
     return (
         <div className="hero min-h-screen">
+            <Helmet>
+                <title>AssetGuard | Add Asset</title>
+            </Helmet>
             <div className="hero-content flex-col lg:gap-8 lg:flex-row">
                 <div>
                     <div className="text-center lg:text-left">

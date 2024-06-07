@@ -1,4 +1,5 @@
 
+import { Helmet } from 'react-helmet';
 import ExtraOne from './ExtraOne';
 import ExtraTwo from './ExtraTwo';
 import HomeHrAssets from './HomeHrAssets';
@@ -11,6 +12,9 @@ const HomeHr = () => {
   
     return (
         <div>
+            <Helmet>
+                <title>AssetGuard | Home</title>
+            </Helmet>
             <HomeHrBanner></HomeHrBanner>
             <div className='w-full md:w-4/5 mx-auto space-y-20 my-14'>
             <HomePending></HomePending>

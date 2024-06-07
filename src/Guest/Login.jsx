@@ -4,6 +4,7 @@ import Title from "../Shared/Title";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
     const [loginError, setLoginError] = useState('');
@@ -54,6 +55,9 @@ const Login = () => {
 
     return (
         <div className="w-full md:w-4/5 mx-auto min-h-screen py-20">
+            <Helmet>
+                <title>AssetGuard | Login</title>
+            </Helmet>
             <div className="flex flex-col">
                 <div>
                     <Title title="Login Now" subtitle="Explore more features"></Title>

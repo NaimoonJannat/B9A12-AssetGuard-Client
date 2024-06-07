@@ -6,6 +6,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../providers/AuthProvider";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 
 const JoinEmployee = () => {
     const [registerError, setRegisterError] = useState("");
@@ -103,6 +104,9 @@ const JoinEmployee = () => {
     }
     return (
         <div className="w-full md:w-4/5 mx-auto py-20  min-h-screen">
+            <Helmet>
+                <title>AssetGuard | Join as Employee</title>
+            </Helmet>
             <div className="flex flex-col justify-between">
                 <div>
                     <Title title="Register" subtitle="Join as an employee" ></Title>
