@@ -80,8 +80,8 @@ const AuthProvider = ({ children }) => {
         const unSubscribe = onAuthStateChanged(auth, async currentUser => {
             setUser(currentUser);
             setLoading(true);
-            if (currentUser.email) {
-                await fetchUserRole(currentUser.email);
+            if (currentUser?.email) {
+                await fetchUserRole(currentUser?.email);
                 setLoading(false);
             
             }

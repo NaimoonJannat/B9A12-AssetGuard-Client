@@ -5,7 +5,7 @@ import AllRequestCard from "./AllRequestCard";
 const AllRequests = () => {
     const requests = useLoaderData();
     return (
-        <div className="py-20">
+        <div className="py-20 w-11/12 md:w-4/5 mx-auto">
             <div>
             <Title
              title="My Requested Assets" subtitle="All Requested Assets"></Title>
