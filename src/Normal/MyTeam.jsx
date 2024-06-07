@@ -4,6 +4,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import { useLoaderData } from "react-router-dom";
 import TeamCard from "./TeamCard";
 import useFetchHrData from "../hooks/useFetchHrData";
+import LoadingSpinner from "../Shared/Pages/LoadingSpinner";
 
 const MyTeam = () => {
     const { user } = useContext(AuthContext); // normal employee login data
@@ -23,8 +24,11 @@ const MyTeam = () => {
     // Use the hook to fetch HR data
     const { hrData, loading, error } = useFetchHrData(teamMail);
 
+    
+
     // While loading or if there's an error, show appropriate messages
-    if (!teams || !user || loading) return <div className="py-20"><p className="text-center text-2xl">You are not connected to any company. Contact with your HR!</p></div>;
+    if(loading) return <LoadingSpinner></LoadingSpinner>
+    if (!teams || !user ) return <div className="py-20"><p className="text-center text-2xl">You are not connected to any company. Contact with your HR!</p></div>;
     if (error) return <div>Error: {error}</div>;
 
     // Ensure hrData is available before proceeding

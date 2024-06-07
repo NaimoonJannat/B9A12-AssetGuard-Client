@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Title from "../../Shared/Title";
 import AssetCard from "../AssetCard";
+import LoadingSpinner from "../../Shared/Pages/LoadingSpinner";
 
 const LimitedStock = () => {
     const [requests, setRequests] = useState([]);
@@ -32,7 +33,7 @@ const LimitedStock = () => {
         <div>
             <Title title="Limited Stock Assets" subtitle="Assets Almost Out of Stock"></Title>
         </div>
-        {loading && <p>Loading...</p>}
+        {loading && <LoadingSpinner></LoadingSpinner>}
         {error && <p>Error: {error}</p>}
         {!loading && !error && (
              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">

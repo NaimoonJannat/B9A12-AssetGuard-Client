@@ -10,6 +10,7 @@ const NavNormal = () => {
     const [userData, setUserData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    console.log(loading, error);
 
     useEffect(() => {
         // Function to fetch data

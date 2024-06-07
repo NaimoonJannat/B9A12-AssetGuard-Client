@@ -1,17 +1,15 @@
 import { useContext } from "react";
 import { AuthContext } from "./providers/AuthProvider";
 import { Navigate, useLocation } from "react-router-dom";
+import LoadingSpinner from "./Shared/Pages/LoadingSpinner";
+
 
 const PrivateRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
     const location = useLocation();
 
     if (loading) {
-        return (
-            <div className="w-full">
-                <span className="loading w-1/3 mx-auto text-[#57A6A1] loading-dots"></span>
-            </div>
-        );
+        return <LoadingSpinner />;
     }
 
     if (user) {
@@ -26,11 +24,7 @@ const AdminRoute = ({ children }) => {
     const location = useLocation();
 
     if (loading) {
-        return (
-            <div className="w-full">
-                <span className="loading w-1/3 mx-auto text-[#57A6A1] loading-dots"></span>
-            </div>
-        );
+        return <LoadingSpinner />;
     }
 
     if (user && role === 'hr') {
@@ -45,11 +39,7 @@ const EmployeeRoute = ({ children }) => {
     const location = useLocation();
 
     if (loading) {
-        return (
-            <div className="w-full">
-                <span className="loading w-1/3 mx-auto text-[#57A6A1] loading-dots"></span>
-            </div>
-        );
+        return <LoadingSpinner />;
     }
 
     if (user && role === 'employee') {

@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import Title from '../../Shared/Title';
 import RequestCardHome from './RequestCardHome';
 import { AuthContext } from '../../providers/AuthProvider';
+import LoadingSpinner from '../../Shared/Pages/LoadingSpinner';
 
 const HomePendingNorm = () => {
     const [requests, setRequests] = useState([]);
@@ -37,7 +38,7 @@ const HomePendingNorm = () => {
             <div>
                 <Title title="My Pending Requests" subtitle="Assets I Need"></Title>
             </div>
-            {loading && <p>Loading...</p>}
+            {loading && <LoadingSpinner></LoadingSpinner>}
             {error && <p>Error: {error}</p>}
             {!loading && !error && (
                 <>

@@ -4,6 +4,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import Title from "../Title";
 import useFetchUserData from "../../hooks/useFetchUserData";
 import Swal from "sweetalert2";
+import LoadingSpinner from "./LoadingSpinner";
 
 const Profile = () => {
     const { user, updateUserProfile } = useContext(AuthContext);
@@ -44,9 +45,7 @@ const Profile = () => {
     return (
         <div className="py-20">
             {loading ? (
-                <div className="w-full">
-                    <span className="loading w-1/3 mx-auto text-[#57A6A1] loading-dots"></span>
-                </div>
+                <LoadingSpinner></LoadingSpinner>
             ) : (
                 <>
                     <Title title="My Profile" subtitle="Profile Information"></Title>

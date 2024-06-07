@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Title from '../../Shared/Title';
 import AllRequestCard from '../AllRequestCard';
+import LoadingSpinner from '../../Shared/Pages/LoadingSpinner';
 
 const HomePending = () => {
     const [requests, setRequests] = useState([]);
@@ -35,7 +36,7 @@ const HomePending = () => {
             <div>
                 <Title title="Pending Requests" subtitle="Some of the pending requests"></Title>
             </div>
-            {loading && <p>Loading...</p>}
+            {loading && <LoadingSpinner></LoadingSpinner>}
             {error && <p>Error: {error}</p>}
             {!loading && !error && (
                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

@@ -4,6 +4,7 @@ import HomePendingNorm from "./HomePendingNorm";
 import HomeRequestsByDate from "./HomeRequestsByDate";
 import Notice from "./Notice";
 import { AuthContext } from "../../providers/AuthProvider";
+import LoadingSpinner from "../../Shared/Pages/LoadingSpinner";
 
 const HomeNormal = () => {
     const [userData, setUserData] = useState([]);
@@ -38,7 +39,7 @@ const HomeNormal = () => {
 
     // Handle loading and error states
     if (loading) {
-        return <p>Loading...</p>;
+        return <LoadingSpinner></LoadingSpinner>;
     }
 
     if (error) {

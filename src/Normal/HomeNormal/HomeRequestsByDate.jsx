@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import Title from '../../Shared/Title';
 import RequestCardHome from './RequestCardHome';
 import { AuthContext } from '../../providers/AuthProvider';
+import LoadingSpinner from '../../Shared/Pages/LoadingSpinner';
 
 const HomeRequestsByDate = () => {
     const [requests, setRequests] = useState([]);
@@ -46,7 +47,7 @@ const HomeRequestsByDate = () => {
             <div>
                 <Title title="My Requests" subtitle="Assets Requested in the Last Month"></Title>
             </div>
-            {loading && <p>Loading...</p>}
+            {loading && <LoadingSpinner></LoadingSpinner>}
             {error && <p>Error: {error}</p>}
             {!loading && !error && (
                 <>

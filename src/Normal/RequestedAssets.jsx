@@ -10,7 +10,7 @@ const RequestedAssets = () => {
     const myEmail = user?.email;
     const filteredData =myRequests.filter(user => user?.useremail === myEmail);
     return (
-        <div className="py-20">
+        <div className="py-20 w-11/12 md:w-4/5 mx-auto">
             <div>
             <Title title="My Requested Assets" subtitle="All Requested Assets"></Title>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
