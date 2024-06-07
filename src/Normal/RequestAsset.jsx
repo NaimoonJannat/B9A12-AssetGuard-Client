@@ -13,7 +13,6 @@ const RequestAsset = () => {
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
-        // Function to fetch data
         const fetchData = async () => {
             try {
                 const response = await fetch('https://b9a12-assetguard-server.vercel.app/teams');
@@ -22,8 +21,7 @@ const RequestAsset = () => {
                 }
                 const data = await response.json();
                 console.log('Fetched data:', data);
-                
-                // Find the user data based on the email
+
                 const teamUser = data.find(team => team?.email === user?.email);
                 console.log('Found team user:', teamUser);
 
@@ -40,27 +38,23 @@ const RequestAsset = () => {
         }
     }, [user]);
 
-    // console.log('Assets:', assets);
-    // console.log('User Data:', userData);
-
-    // Handle cases where userData is not yet set
-    // if (loading) {
-    //     return <LoadingSpinner></LoadingSpinner>;
-    // }
+    if (loading) {
+        return <LoadingSpinner />;
+    }
 
     if (error) {
         return <div>Error: {error}</div>;
     }
 
+    if (!userData) {
+        return <div className="text-center text-2xl py-20">You are not connected to any company. Contact with your HR.</div>;
+    }
+
     const filteredAssets = assets.filter(asset => asset?.hrEmail === userData?.hremail);
 
     return (
-       <div>
-         {
-            loading ? (<LoadingSpinner></LoadingSpinner>) : 
-           (
-            <div className="text-center space-y-4 py-20 w-11/12 md:w-4/5 mx-auto">
-            <Title title="Request An Asset" subtitle="Choose asset to request"></Title>
+        <div className="text-center space-y-4 py-20 w-11/12 md:w-4/5 mx-auto">
+            <Title title="Request An Asset" subtitle="Choose asset to request" />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {filteredAssets.map(asset =>
                     <AssetCardNormal
@@ -71,9 +65,6 @@ const RequestAsset = () => {
                 )}
             </div>
         </div>
-           )
-        }
-       </div>
     );
 };
 

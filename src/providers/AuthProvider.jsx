@@ -79,9 +79,15 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, async currentUser => {
             setUser(currentUser);
-            setLoading(false);
-            if (currentUser) {
+            setLoading(true);
+            if (currentUser.email) {
                 await fetchUserRole(currentUser.email);
+                setLoading(false);
+            
+            }
+            else{
+                setLoading(false);
+                setUser(null);
             }
         });
         return () => {
@@ -96,8 +102,8 @@ const AuthProvider = ({ children }) => {
         logOut,
         signIn,
         signInGoogle,
-        role, // Expose role
-        setUser // Expose setUser for direct updates in Profile component
+        role, 
+        setUser 
     };
 
     return (
