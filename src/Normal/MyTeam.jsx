@@ -11,10 +11,10 @@ const MyTeam = () => {
 
 
     const userEmail = user?.email;
-    console.log("User Email:", userEmail);
+    // console.log("User Email:", userEmail);
 
     // Get the user's team data to find the HR email
-    const userTeamData = teams?.find(team => team.email === userEmail);
+    const userTeamData = teams?.find(team => team?.email === userEmail);
     // console.log("User Team Data:", userTeamData);
 
     const teamMail = userTeamData?.hremail;
@@ -24,13 +24,13 @@ const MyTeam = () => {
     const { hrData, loading, error } = useFetchHrData(teamMail);
 
     // While loading or if there's an error, show appropriate messages
-    if (!teams || !user || loading) return <div>Loading...</div>;
+    if (!teams || !user || loading) return <div className="py-20"><p className="text-center text-2xl">You are not connected to any company. Contact with your HR!</p></div>;
     if (error) return <div>Error: {error}</div>;
 
     // Ensure hrData is available before proceeding
     if (!hrData) return <div>No HR data available.</div>;
 
-    const filteredTeam = teams.filter(team => team.hremail === teamMail);
+    const filteredTeam = teams.filter(team => team?.hremail === teamMail);
     // console.log("Filtered Team Data:", filteredTeam);
 
     return (

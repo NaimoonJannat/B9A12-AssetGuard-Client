@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Title from '../../Shared/Title';
 import RequestCardHome from './RequestCardHome';
-
+import { AuthContext } from '../../providers/AuthProvider';
 
 const HomePendingNorm = () => {
     const [requests, setRequests] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const { user } = useContext(AuthContext);
 
     useEffect(() => {
         // Function to fetch data
@@ -28,8 +29,8 @@ const HomePendingNorm = () => {
         fetchData();
     }, []);
 
-    // Filter the data by status "pending"
-    const pendingRequests = requests.filter(request => request.status === 'pending').slice(0, 5);
+    // Filter the data by status "pending" and user email
+    const pendingRequests = requests.filter(request => request?.status === 'pending' && request?.useremail === user?.email).slice(0, 5);
 
     return (
         <div className='w-11/12 md:w-4/5 mx-auto'>
@@ -39,14 +40,20 @@ const HomePendingNorm = () => {
             {loading && <p>Loading...</p>}
             {error && <p>Error: {error}</p>}
             {!loading && !error && (
-                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                 {pendingRequests.map(request => (
-                     <RequestCardHome
-                         key={request._id}
-                         request={request}
-                     />
-                 ))}
-             </div>
+                <>
+                    {pendingRequests.length > 0 ? (
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            {pendingRequests.map(request => (
+                                <RequestCardHome
+                                    key={request._id}
+                                    request={request}
+                                />
+                            ))}
+                        </div>
+                    ) : (
+                        <p className='text-center'>You Have Not Requested Any Asset Yet!</p>
+                    )}
+                </>
             )}
         </div>
     );

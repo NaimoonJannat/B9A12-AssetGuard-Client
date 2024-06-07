@@ -1,11 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Title from '../../Shared/Title';
 import RequestCardHome from './RequestCardHome';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const HomeRequestsByDate = () => {
     const [requests, setRequests] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const { user } = useContext(AuthContext);
 
     useEffect(() => {
         // Function to fetch data
@@ -33,7 +35,7 @@ const HomeRequestsByDate = () => {
 
     const filteredRequests = requests.filter(request => {
         const requestDate = new Date(request.requestDate);
-        return requestDate >= oneMonthAgo;
+        return requestDate >= oneMonthAgo && request.useremail === user.email;
     });
 
     // Sort the filtered requests by date
@@ -47,14 +49,20 @@ const HomeRequestsByDate = () => {
             {loading && <p>Loading...</p>}
             {error && <p>Error: {error}</p>}
             {!loading && !error && (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {sortedRequests.map(request => (
-                        <RequestCardHome
-                            key={request._id}
-                            request={request}
-                        />
-                    ))}
-                </div>
+                <>
+                    {sortedRequests.length > 0 ? (
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            {sortedRequests.map(request => (
+                                <RequestCardHome
+                                    key={request._id}
+                                    request={request}
+                                />
+                            ))}
+                        </div>
+                    ) : (
+                        <p className='text-center'>You Have Not Requested Any Asset Yet!</p>
+                    )}
+                </>
             )}
         </div>
     );

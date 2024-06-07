@@ -24,11 +24,11 @@ const Login = () => {
 
         signIn(email, password)
         .then(result => {
-            console.log(result.user);
+            console.log(result);
             // navigate after login 
             toast.success('Logged in successfully!');
             console.log("Navigating to home...");
-            navigate("/profile");
+            navigate("/");
         })
         .catch(error => {
             console.error(error);
