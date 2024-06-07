@@ -50,7 +50,7 @@ const RequestedAssets = () => {
         return <p className="py-20 text-2xl text-center">You are not connected to any company. Contact with your HR.</p>;
     }
 
-    const filteredRequests = myRequests.filter(request => request?.hremail === teamData?.hremail);
+    const filteredRequests = myRequests.filter(request => request?.useremail === teamData?.email);
 
     return (
         <div className="py-20 w-11/12 md:w-4/5 mx-auto">
@@ -61,6 +61,7 @@ const RequestedAssets = () => {
                         <RequestCard
                             key={request._id}
                             request={request}
+                            user={user}
                         />
                     ))}
                 </div>
