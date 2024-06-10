@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Title from "../../Shared/Title";
 import AssetCard from "../AssetCard";
 import LoadingSpinner from "../../Shared/Pages/LoadingSpinner";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const HomeHrAssets = () => {
     const [requests, setRequests] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const {user} = useContext(AuthContext);
+    const userEmail = user.email;
 
     useEffect(() => {
         // Function to fetch data
@@ -27,6 +30,7 @@ const HomeHrAssets = () => {
 
         fetchData();
     }, []);
+    const filteredRequests = requests.filter(request => request.hrEmail === userEmail);
     return (
         <div>
             <div>
@@ -36,7 +40,7 @@ const HomeHrAssets = () => {
             {error && <p>Error: {error}</p>}
             {!loading && !error && (
                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                 {requests.slice(0,4).map(request => (
+                 {filteredRequests.slice(0,4).map(request => (
                      <AssetCard
                      key={request._id}
                      asset={request}

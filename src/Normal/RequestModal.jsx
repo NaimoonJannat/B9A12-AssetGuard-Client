@@ -11,6 +11,7 @@ const RequestModal = ({ isOpen, onClose, onSubmit, asset, user }) => {
 
     const handleSubmit = () => {
         const requestData = {
+            hrEmail: asset.hrEmail,
             product: asset.product,
             quantity: asset.quantity,
             status: 'pending',
