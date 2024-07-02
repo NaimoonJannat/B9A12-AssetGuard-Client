@@ -49,14 +49,17 @@ Make sure you have Node.js and npm installed on your machine. You can download t
 1. **Clone the repository:**
    ```sh
    git clone https://github.com/yourusername/assetguard.git
+
  2. **Navigate to the project directory:**
 Navigate to the cloned project directory using the terminal or command prompt:
-   ```sh
-   cd assetguard
+   ```sh cd assetguard
 
-3. **Install dependencies:**
-Install the necessary dependencies using npm:
+3. **Install Dependencies:**
+Command: npm i 
 
-```sh
-Copy code
-npm install
+
+4. Command: npm run dev
+
+5. 
+
+
