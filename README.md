@@ -35,3 +35,28 @@ Live Website Link - [AssetGuard Live](https://assetguard-43955.web.app/)
 ## Admin Information
 - **Email**: abc@gmail.com
 - **Password**: 11AAbb
+
+## Installation
+
+To get a local copy up and running, follow these steps:
+
+### Prerequisites
+
+Make sure you have Node.js and npm installed on your machine. You can download them from [here](https://nodejs.org/).
+
+### Installation
+
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/yourusername/assetguard.git
+ 2. **Navigate to the project directory:**
+Navigate to the cloned project directory using the terminal or command prompt:
+   ```sh
+   cd assetguard
+
+3. **Install dependencies:**
+Install the necessary dependencies using npm:
+
+```sh
+Copy code
+npm install
