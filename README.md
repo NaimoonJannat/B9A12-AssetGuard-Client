@@ -50,15 +50,13 @@ Make sure you have Node.js and npm installed on your machine. You can download t
    ```sh
    git clone https://github.com/yourusername/assetguard.git
 
- 2. **Navigate to the project directory:**
-   ```sh 
+ 2. **Navigate to the project directory:** 
    cd assetguard
 
 3. **Install Dependencies:**
-   ```sh 
     npm i 
     npm run dev
 
-5. Open your browser and navigate to 'http://localhost:3000' to see the application running.
+4. Open your browser and navigate to 'http://localhost:3000' to see the application running.
 
 
